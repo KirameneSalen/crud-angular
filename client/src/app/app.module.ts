@@ -15,6 +15,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { InformationComponent } from './components/information/information.component';
 import { InformationModalComponent } from './components/information/information-modal/information-modal.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { CarComponent } from './components/car/car.component';
+import { CarModalComponent } from './components/car/car-modal/car-modal.component';
+import { SearchCarPipe } from './pipes/searchCarPipe';
 
 const DefaultTooltipOptions: TooltipOptions = {
   'hide-delay': 0
@@ -26,7 +29,10 @@ const DefaultTooltipOptions: TooltipOptions = {
     HeaderComponent,
     InformationComponent,
     InformationModalComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    CarComponent,
+    CarModalComponent,
+    SearchCarPipe
   ],
   imports: [
     BrowserModule,

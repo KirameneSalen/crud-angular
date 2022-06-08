@@ -1,0 +1,108 @@
+<form #carForm = 'ngForm'>
+  <div class='modal-header'>
+    <h4 class='modal-title'>{{car_id ? 'Modificare' : 'Adăugare'}} mașină</h4>
+  </div>
+  
+  <div class='modal-body'>
+    <div class='row'>
+      <label class='col-2 control-label'>Marcă*</label>
+      <div class='col-5'>
+        <input 
+          id='marca' 
+          name='marca' 
+          #marca='ngModel' 
+          [(ngModel)]='modal.marca' 
+          class='form-control' 
+          placeholder='Marcă...' 
+          maxlength='255'
+          required
+          [ngClass]="{'is-invalid': ( marca.touched || marca.dirty ) && !marca.valid}" />
+          <div class="invalid-feedback" *ngIf="marca.touched || marca.dirty">
+            <span *ngIf="marca.errors?.['required']">
+              Marca este un câmp obligatoriu.
+            </span>
+          </div>
+      </div>
+    </div>
+
+    <div class='row'>
+        <label class='col-2 control-label'>Model*</label>
+        <div class='col-5'>
+            <input 
+              id="model" 
+              name="model" 
+              #model="ngModel" 
+              [(ngModel)]='modal.model' 
+              class='form-control' 
+              placeholder='Model...' 
+              maxlength='255' 
+              required
+              [ngClass]="{'is-invalid': model.touched && !model.valid}" />
+              <div class="invalid-feedback" *ngIf="model.touched || model.dirty">
+                <span *ngIf="model.errors?.['required']">
+                  Modelul este un câmp obligatoriu.
+                </span>
+              </div>
+        </div>
+    </div>
+  
+    <div class='row'>
+      <label class='col-2 control-label'>An fabricație*</label>
+      <div class='col-5'>
+        <input 
+              id="an_fabricatie" 
+              name="an_fabricatie" 
+              #an_fabricatie="ngModel" 
+              type='tel'
+              [(ngModel)]='modal.an_fabricatie' 
+              class='form-control' 
+              placeholder='An fabricație...' 
+              maxlength='4' 
+              required
+              [ngClass]="{'is-invalid': an_fabricatie.touched && !an_fabricatie.valid}" />
+              <div class="invalid-feedback" *ngIf="an_fabricatie.touched || an_fabricatie.dirty">
+                <span *ngIf="an_fabricatie.errors?.['required']">
+                  Anul fabricației este un câmp obligatoriu.
+                </span>
+                <span *ngIf="an_fabricatie.errors?.['maxlength']">
+                  Anul fabricației are maxim 4 cifre.
+                </span>
+              </div>
+      </div>
+    </div>
+
+    <div class='row'>
+        <label class='col-2 control-label'>Capacitate cilindrică*</label>
+        <div class='col-5'>
+            <input 
+              id="capacitate_cilindrica" 
+              name="capacitate_cilindrica" 
+              #capacitate_cilindrica="ngModel" 
+              type='tel'
+              [(ngModel)]='modal.capacitate_cilindrica' 
+              class='form-control' 
+              placeholder='Capacitate cilindrică...' 
+              maxlength='4' 
+              required
+              [ngClass]="{'is-invalid': capacitate_cilindrica.touched && !capacitate_cilindrica.valid}" />
+              <div class="invalid-feedback" *ngIf="capacitate_cilindrica.touched || capacitate_cilindrica.dirty">
+                <span *ngIf="capacitate_cilindrica.errors?.['required']">
+                  Capacitatea cilindrică este un câmp obligatoriu.
+                </span>
+              </div>
+        </div>
+    </div>
+  </div>
+  
+  <div class='modal-footer'>
+    <button type='button' class='btn btn-outline-dark' (click)='activeModal.dismiss()'>Renunță</button>
+    <button 
+        type='submit' 
+        class='btn btn-success' 
+        (click)='save()'
+        [title]="carForm.valid ? 'Salvează datele despre mașină' : 'Dezactivat deoarece formularul este invalid'"
+        [disabled]="!carForm.valid">
+      Salvează
+    </button>
+  </div>
+</form>

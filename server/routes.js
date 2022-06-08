@@ -7,6 +7,7 @@ module.exports = app => {
 
   /* LOGIN */
   app.use('/api/information', require('./routes/information')(app));
+  app.use('/api/car', require('./routes/car')(app));
 
   app.route('*/:url(api|auth|components|app|bower_components|assets)/*').get(errors[404]);
 

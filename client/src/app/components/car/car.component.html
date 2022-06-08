@@ -1,0 +1,69 @@
+
+<div class="col-12 mt-2 width-1220">
+    <div class='row'>
+      <div class='col-4'>
+        <button class='btn btn-primary btn-sm' type='button' (click)='addEdit()'>
+          <fa-icon [icon]='faPlus'></fa-icon> Adaugă
+        </button>
+      </div>
+      <div class='col-4'>
+        <h4 class='text-center'>Mașini</h4>
+      </div>
+      <div class='col-4'></div>
+    </div>
+  
+    <div class='row'>
+      <div class='col-12 width-1220'>
+        <table class='table table-striped table-hover'>
+          <thead>
+            <tr class='table-bordered'>
+              <th width='60px' rowspan='2'>Nr. Crt.</th>
+              <th width='150px'>Marcă</th>
+              <th>Model</th>
+              <th width='80px'>An fabricație</th>
+              <th width='120px'>Capacitate cilindrică</th>
+              <th width='80px'>Taxă impozit</th>
+              <th rowspan='2' width='70px'></th>
+            </tr>
+            <tr>
+              <th><input class='form-control input-xs' [(ngModel)]='search_car.marca' placeholder='Căutare...'></th>
+              <th><input class='form-control input-xs' [(ngModel)]='search_car.model' placeholder='Căutare...'></th>
+              <th><input class='form-control input-xs' type="number" [(ngModel)]='search_car.an_fabricatie' placeholder='Căutare...'></th>
+              <th><input class='form-control input-xs' type="number" [(ngModel)]='search_car.capacitate_cilindrica' placeholder='Căutare...'></th>
+              <th><input class='form-control input-xs' type="number" [(ngModel)]='search_car.taxa_impozit' placeholder='Căutare...'></th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+  
+      <div class='col-12 position-relative width-1220'>
+        <div id='view' class='view-scroll-cars' style='max-height: 60vh;' [scrollWindow]='false' (scroll)='showTopButton()' infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="30" (scrolled)="onScrollDown()">
+          <button type='button' id='back-top' class={{this.showBackTop}} (click)='onScrollTop()'>
+            <fa-icon [icon]='faChevronUp'></fa-icon>
+          </button>
+          <table class='table table-hover table-striped table-bordered font-14 p-0'>
+            <tbody>
+              <tr *ngFor='let r of cars.slice(0, limit) | searchCar: search_car' (dblclick)='addEdit(r.id)' class='cursor-pointer'>
+                <td width='60px' class='text-center'>{{r.id}}</td>
+                <td width='150px' class='text-center'>{{r.marca}}</td>
+                <td class='text-center'>{{r.model}}</td>
+                <td width='80' class='text-center'>{{r.an_fabricatie}}</td>
+                <td width='120' class='text-center'>{{r.capacitate_cilindrica}}</td>
+                <td width='80px' class='text-center'>{{r.taxa_impozit}}</td>
+                <td width='30px' (click)='addEdit(r.id)' class='text-center'>
+                  <fa-icon class='text-primary' [icon]='faEdit' tooltip='Modificare' placement='left'></fa-icon>
+                </td>
+                <td width='30px' (click)='delete(r)' class='text-center' >
+                  <fa-icon class='text-danger' [icon]='faTrashAlt' tooltip='Ștergere' placement='left'></fa-icon>
+                </td>
+              </tr>
+              <tr colspan='15' *ngIf='!cars.length' class='text-center fw-bold'>
+                <td>Date inexistente!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
