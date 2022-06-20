@@ -1,0 +1,5 @@
+<ul *ngIf="cars">
+    <li *ngFor='let r of cars.slice(0, limit)' class='cursor-pointer'>
+        <span>{{r.marca}} {{r.model}} {{r.an_fabricatie}}</span>
+    </li>
+</ul>

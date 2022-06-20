@@ -4,9 +4,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { REPLACE_DIACRITICS } from 'src/app/utils/utils-input';
 import { toastr } from '../../toastr/toastr.component';
-import { NgForm } from '@angular/forms';
 import { Car } from 'src/app/models/car';
-import * as e from 'express';
 
 @Component({
   selector: 'app-car-modal',

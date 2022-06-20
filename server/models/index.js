@@ -30,8 +30,10 @@ module.exports = function getModels(sequelize, Sequelize) {
 
   const arr = [
     /************************ Information *********************/
-    {path: __dirname + '/information.js', sync: true},
-    {path: __dirname + '/car.js', sync: true},
+    { path: __dirname + '/information.js', sync: true },
+    { path: __dirname + '/car.js', sync: true },
+    { path: __dirname + '/person.js', sync: true },
+    { path: __dirname + '/carPerson.js', sync: true },
   ];
 
   const syncTables = [];
@@ -61,7 +63,7 @@ module.exports = function getModels(sequelize, Sequelize) {
   if (syncTables.length && process.env.RUN_CRON === 'true') {
     _.each(syncTables, file => {
       console.info(file);
-      file.sync({alter: true, logging: false});
+      file.sync({ alter: true, logging: false });
     });
   }
 

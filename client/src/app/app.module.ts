@@ -18,6 +18,11 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 import { CarComponent } from './components/car/car.component';
 import { CarModalComponent } from './components/car/car-modal/car-modal.component';
 import { SearchCarPipe } from './pipes/searchCarPipe';
+import { PersonComponent } from './components/person/person.component';
+import { PersonModalComponent } from './components/person/person-modal/person-modal.component';
+import { CarListComponent } from './components/car/car-list/car-list.component';
+import { SearchPersonPipe } from './pipes/searchPersonPipe';
+import { GetCarNamePipe } from './pipes/getCarNamePipe';
 
 const DefaultTooltipOptions: TooltipOptions = {
   'hide-delay': 0
@@ -32,7 +37,12 @@ const DefaultTooltipOptions: TooltipOptions = {
     ConfirmDialogComponent,
     CarComponent,
     CarModalComponent,
-    SearchCarPipe
+    SearchCarPipe,
+    PersonComponent,
+    PersonModalComponent,
+    CarListComponent,
+    SearchPersonPipe,
+    GetCarNamePipe
   ],
   imports: [
     BrowserModule,

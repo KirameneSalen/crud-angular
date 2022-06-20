@@ -8,7 +8,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { toastr } from '../toastr/toastr.component';
 import { Car } from 'src/app/models/car';
-import { REPLACE_DIACRITICS } from 'src/app/utils/utils-input';
 
 @Component({
   selector: 'app-car',
@@ -20,13 +19,6 @@ export class CarComponent implements OnInit {
   faTrashAlt = faTrashAlt; faEdit = faEdit; faChevronUp = faChevronUp; faPlus = faPlus;
   limit: number = 70; showBackTop: string = '';
   cars: Car[] = [];
-  // search_car = {
-  //   model: '',
-  //   marca: '',
-  //   an_fabricatie: '',
-  //   capacitate_cilindrica: '',
-  //   taxa_impozit: ''
-  // };
   search_car = new Car();
 
   constructor(private _modal: NgbModal, private _spinner: NgxSpinnerService) { SET_HEIGHT('view', 20, 'height'); }
