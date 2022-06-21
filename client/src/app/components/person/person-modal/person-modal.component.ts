@@ -58,7 +58,6 @@ export class PersonModalComponent implements OnInit {
         this.activeModal.close();
       }).catch(() => toastr.error('Eroare la salvarea persoanei!'));
       this.car_id?.forEach(car => {
-        console.log(`CarID: ${car}, PersonId: ${this.created_id}`);
         axios.post('/api/carPerson', { CarId: car, PersonId: this.created_id }).then(() => {
           this._spinner.hide();
           this.activeModal.close();
@@ -72,9 +71,7 @@ export class PersonModalComponent implements OnInit {
       }).catch(() => toastr.error('Eroare la modificarea persoanei!'));
 
       let cars_to_be_added = this.car_id?.filter(x => this.modal.cars?.map(x => x.id).indexOf(x) === -1);
-      console.log(cars_to_be_added);
       let cars_to_be_deleted = this.modal.cars?.filter(x => this.car_id?.indexOf(x.id) === -1);
-      console.log(cars_to_be_deleted);
       cars_to_be_deleted?.forEach(car => {
         axios.delete(`/api/carPerson/del?car_id=${car.id}&person_id=${this.person_id}`).then(() => {
           this._spinner.hide();
@@ -82,7 +79,6 @@ export class PersonModalComponent implements OnInit {
         }).catch(() => toastr.error('Eroare la salvarea persoanei!'));
       });
       cars_to_be_added?.forEach(car => {
-        console.log(`CarID: ${car}, PersonId: ${this.person_id}`);
         axios.post('/api/carPerson', { CarId: car, PersonId: this.person_id }).then(() => {
           this._spinner.hide();
           this.activeModal.close();

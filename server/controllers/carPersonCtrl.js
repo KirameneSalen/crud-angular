@@ -3,10 +3,9 @@ const { response } = require("express");
 module.exports = db => {
     return {
         create: (req, res) => {
-            console.log(req.body);
             db.models.CarPerson.create(req.body).then(() => {
                 res.send({ success: true });
-            }).catch((resp) => { console.log(resp); res.status(401); res.end() });
+            }).catch(() => { res.status(401); res.end() });
         },
 
         find: (req, res) => {
@@ -14,13 +13,13 @@ module.exports = db => {
             FROM "CarPerson" JOIN "Car" on "id" = "CarId"
             WHERE "PersonId" = ${req.params.id}`, { type: db.QueryTypes.SELECT }).then(resp => {
                 res.send(resp);
-            }).catch((resp) => { res.status(401); res.end() });
+            }).catch(() => { res.status(401); res.end() });
         },
 
         destroy: (req, res) => {
             db.query(`DELETE FROM "CarPerson" WHERE "CarId" = ${req.query.car_id} AND "PersonId" = ${req.query.person_id}`, { type: db.QueryTypes.DELETE }).then(() => {
                 res.send({ success: true });
-            }).catch((resp) => { console.log(resp); res.status(401); });
+            }).catch(() => { res.status(401); });
         }
     };
 };
