@@ -34,6 +34,7 @@ export class PersonModalComponent implements OnInit {
       }).catch(() => toastr.error('Eroare la preluarea persoanei!'));
       axios.get(`/api/carPerson/${this.person_id}`).then(({ data }) => {
         this.modal.cars = data;
+        this.modal.cars?.map((c) => c.nume = c.marca + ' ' + c.model + ' ' + c.an_fabricatie?.toString());
         this.car_id = this.modal.cars?.map(car => car.id);
         this._spinner.hide();
       }).catch(() => toastr.error('Eroare la preluarea mașinilor!'));
@@ -41,7 +42,7 @@ export class PersonModalComponent implements OnInit {
 
     axios.get(`/api/car`).then(({ data }) => {
       this.cars = data;
-      this.cars.map((i) => i.getName());
+      this.cars.map((c) => c.nume = c.marca + ' ' + c.model + ' ' + c.an_fabricatie?.toString());
       this._spinner.hide();
     }).catch(() => toastr.error('Eroare la preluarea mașinilor!'));
   }

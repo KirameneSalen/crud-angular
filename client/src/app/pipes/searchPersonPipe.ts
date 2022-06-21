@@ -30,9 +30,7 @@ export class SearchPersonPipe implements PipeTransform {
 
         if (car) {
             value = value.filter((obj: Person) => {
-                if (obj.cars) return obj.cars.map(c => {
-                    return new Car(c.id, c.marca, c.model, c.an_fabricatie, c.capacitate_cilindrica, c.taxa_impozit).getName();
-                }).join(' ').includes(car)
+                if (obj.cars) return obj.cars.map(c => c.nume).join(' ').includes(car)
                 return true;
             });
         }

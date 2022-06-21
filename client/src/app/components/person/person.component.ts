@@ -36,8 +36,8 @@ export class PersonComponent implements OnInit {
       this.person = data;
       this.person.forEach(async person => {
         axios.get(`/api/carPerson/${person.id}`).then(({ data }) => {
-          // console.log(data);
           person.cars = data;
+          person.cars?.map((c) => c.nume = c.marca + ' ' + c.model + ' ' + c.an_fabricatie?.toString())
         }).catch((error) => {
           console.log(error);
         });
@@ -70,11 +70,6 @@ export class PersonComponent implements OnInit {
       }).catch(() => toastr.error('Eroare la ștergerea persoanei!'));
     });
   }
-
-  // async getCars(person: Person): Promise<Car[]> {
-  //   // 
-  //   return [];
-  // }
 
   onResize(): void {
     SET_HEIGHT('view', 20, 'height');
